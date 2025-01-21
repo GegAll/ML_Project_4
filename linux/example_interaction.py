@@ -9,12 +9,13 @@ import time
 import matplotlib.animation as animation
 
 # This initializes the environment to interact with
-unity_env = UnityEnvironment("./ML_Project_4/linux/square_env/square.x86_64")
+unity_env = UnityEnvironment("./linux/square_env/square.x86_64")
 env = UnityToGymWrapper(unity_env, allow_multiple_obs=True)
 
 # This resets the environment to an initial state and provides an initial observation
 # - observations are three numpy arrays 
 obs_ego, obs_top, vectorial = env.reset()
+print(vectorial)
 # obs_ego is the observation that the robot-camera provides (your data)
 # obs_top is a topdown view (debug only)
 # vectorial contains non-visual signals:
@@ -30,7 +31,7 @@ def animate(i):
     global last_time
     current_time = time.time()
     time_between = current_time - last_time
-    print(f"Current FPS {1/time_between:.2f}")
+    # print(f"Current FPS {1/time_between:.2f}")
     last_time = current_time
     step_output = env.step(np.random.uniform(-0.5, 0.5, 3))
     obs_ego, obs_top, vectorial = step_output[0]

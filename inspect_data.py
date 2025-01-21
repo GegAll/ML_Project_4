@@ -46,5 +46,5 @@ if __name__ == '__main__':
     print(cropped_images.shape)
     normalized_image = normalize(cropped_images)
     h_features = hsfa(normalized_image)
-    features = sfa(normalized_image)
+    # features = sfa(normalized_image)
 
